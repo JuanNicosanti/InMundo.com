@@ -1,6 +1,6 @@
 
 		<div class="page-header">
-			<h1>Listado de tripulantes</h1><h2> del vuelo {{vuelo.numero}}</h2>
+			<h1>Listado de tripulantes del vuelo<small>  {{tripulacionCtrl.vuelo.numero}}</small></h1>
 		</div>
 <div class="col-lg-12">
 
@@ -19,9 +19,23 @@
 								<td class="col-xs-3">{{tripulante.nombre}}</td>
 								<td class="col-xs-3">{{tripulante.apellido}}</td>
 								<td class="col-xs-3">{{tripulante.tipoPuesto}}</td>
+								
 							</tr>
 						</tbody>
 					</table>
+					
+						<button type="button" class="btn btn-success" data-toggle="modal"  aria-label="Agregar">
+						Agregar tripulante</button>
+						
+						<button type="button" class="btn btn-primary" data-toggle="modal"  aria-label="Agregar"
+						
+						ng-click="tripulacionCtrl.volverAVuelos()">
+						volver
+						
+						</button>
+						
+						
+               
 
 				</div>
 				<div class="alert alert-danger animate-repeat"

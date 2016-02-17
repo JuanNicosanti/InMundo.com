@@ -40,13 +40,19 @@ app.controller('VuelosController', ['vuelosService', '$scope', '$state', functio
 }]);
 
 
-app.controller('tripulacionVueloController', function (vuelosService, vueloData, vueloSeleccionadoService, $scope) {
+app.controller('tripulacionVueloController', function (vuelosService, vueloData, vueloSeleccionadoService, $scope, $state) {
 	
 	var self = this;
 	
 	this.vuelo = vueloData.data;
 	
 	$scope.tripulantes = self.vuelo.tripulantes;
+	
+	self.numeroDeVuelo = self.vuelo.numero
+	
+	this.volverAVuelos = function(){
+		$state.go('vuelos');
+	}
 	
 });
   

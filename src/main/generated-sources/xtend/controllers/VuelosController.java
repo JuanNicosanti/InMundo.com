@@ -30,7 +30,7 @@ public class VuelosController extends ResultFactory {
   private JSONUtils _jSONUtils = new JSONUtils();
   
   public static void main(final String[] args) {
-    XTRest.start(VuelosController.class, 9994);
+    XTRest.start(VuelosController.class, 9995);
   }
   
   @Get("/vuelos")
@@ -71,7 +71,7 @@ public class VuelosController extends ResultFactory {
     return _xblockexpression;
   }
   
-  @Get("/vuelos/search")
+  @Get("/vuelos/:numero")
   public Result buscar(final String numero, final String target, final Request baseRequest, final HttpServletRequest request, final HttpServletResponse response) {
     Result _xblockexpression = null;
     {
@@ -157,12 +157,12 @@ public class VuelosController extends ResultFactory {
     }
     {
     	Matcher matcher = 
-    		Pattern.compile("/vuelos/search").matcher(target);
+    		Pattern.compile("/vuelos/(\\w+)").matcher(target);
     	if (request.getMethod().equalsIgnoreCase("Get") && matcher.matches()) {
     		// take parameters from request
-    		String numero = request.getParameter("numero");
     		
     		// take variables from url
+    		String numero = matcher.group(1);
     		
     		
     	    Result result = buscar(numero, target, baseRequest, request, response);
@@ -214,7 +214,7 @@ public class VuelosController extends ResultFactory {
     	+ "			</tr>"
     	+ "			<tr>"
     	+ "				<td>GET</td>"
-    	+ "				<td>/vuelos/search</td>"
+    	+ "				<td>/vuelos/:numero</td>"
     	+ "				<td>numero</td>"
     	+ "			</tr>"
     	+ "			<tr>"
